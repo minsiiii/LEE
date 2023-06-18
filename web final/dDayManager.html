@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>D-Day 매니저</title>
+    <link rel="stylesheet" type="text/css" href="dDayManager.css">
+    <link rel="icon" href="./Dday.png">
+    <script src="dDayManager.js"></script>
+</head>
+<body>
+    <header>
+        <h1>D-Day 매니저</h1>
+        <p>
+            D-Day 매니저는 기준일과 비교일을 입력하여 며칠이 남았는지 혹은 지났는지를 계산하는 웹 어플리케이션입니다.
+            기준일과 비교일을 저장하고 관리할 수 있으며, 기준일로부터의 특정 날짜를 계산하여 보여줍니다.
+        </p>
+    </header>
+
+    <main>
+        <section>
+            <h2>기준일과 비교일 입력</h2>
+            <label for="dDayBase">기준일:</label>
+            <input type="date" id="dDayBase" value="2023-06-18">
+
+            <label for="dDayTarget">비교일:</label>
+            <div id="targetDateContainer">
+                <input type="date" id="dDayTarget">
+                <button onclick="saveDate()">저장</button>
+            </div>
+        </section>
+
+        <section>
+            <h2>D-Day 계산</h2>
+            <button id="calculateButton" onclick="calculateDday()">계산하기</button>
+            <div id="dDayResult"></div>
+        </section>
+
+        <section>
+            <h2>기준일로부터의 날짜</h2>
+            <ul id="futureDates"></ul>
+        </section>
+
+        <section>
+            <h2>저장된 비교일</h2>
+            <ul id="savedDates"></ul>
+        </section>
+
+        <button id="clearButton" onclick="clearSavedDates()">저장된 비교일 초기화</button>
+    </main>
+
+    <script>
+        // Local Storage에서 저장된 비교일을 가져와서 화면에 표시
+        loadSavedDates();
+        // 기준일로부터의 미래 날짜 계산하여 표시
+        calculateFutureDates();
+        // 기본값 설정
+        resetDefaultDate();
+    </script>
+</body>
+</html>
